@@ -41,10 +41,27 @@ static JRNLocalNotificationCenter *defaultCenter;
     }
 }
 
+- (NSArray *)localNotifications
+{
+    return [[UIApplication sharedApplication] scheduledLocalNotifications];
+}
+
 - (void)cancelAllLocalNotifications
 {
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [self.localPushDictionary removeAllObjects];
+}
+
+- (void)cancelLocalNotification:(UILocalNotification *)localNotification
+{
+    if ( !localNotification ) {
+        return;
+    }
+    
+    [[UIApplication sharedApplication] cancelLocalNotification:localNotification];
+    if ( localNotification.userInfo[JRNLocalNotificationHandlingKeyName] ) {
+        [self.localPushDictionary removeObjectForKey:localNotification.userInfo[JRNLocalNotificationHandlingKeyName]];
+    }
 }
 
 - (void)cancelLocalNotificationForKey:(NSString *)key

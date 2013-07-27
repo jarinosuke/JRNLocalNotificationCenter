@@ -15,15 +15,7 @@
 {
     // Override point for customization after application launch.
     [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge)];
-    
-    [[JRNLocalNotificationCenter defaultCenter] postNotificationOn:[NSDate dateWithTimeIntervalSinceNow:30.0]
-                                                            forKey:@"test"
-                                                         alertBody:@"This is DemoApp Test Notification."
-                                                       alertAction:@"Open"
-                                                         soundName:nil
-                                                       launchImage:nil
-                                                          userInfo:@{@"time": @"12"}
-                                                        badgeCount:123];
+    application.applicationIconBadgeNumber = 0;
     return YES;
 }
 

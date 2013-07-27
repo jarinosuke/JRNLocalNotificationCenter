@@ -12,7 +12,9 @@ extern NSString *const JRNLocalNotificationHandlingKeyName;
 
 @interface JRNLocalNotificationCenter : NSObject
 + (JRNLocalNotificationCenter *)defaultCenter;
+- (NSArray *)localNotifications;
 - (void)cancelAllLocalNotifications;
+- (void)cancelLocalNotification:(UILocalNotification *)localNotification;
 - (void)cancelLocalNotificationForKey:(NSString *)key;
 
 - (void)postNotificationOnNowForKey:(NSString *)key
