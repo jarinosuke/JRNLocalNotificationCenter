@@ -7,15 +7,36 @@
 //
 
 #import "AppDelegate.h"
+#import "JRNLocalNotificationCenter.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge)];
+    
+    [[JRNLocalNotificationCenter defaultCenter] postNotificationOn:[NSDate dateWithTimeIntervalSinceNow:30.0]
+                                                            forKey:@"test"
+                                                         alertBody:@"This is DemoApp Test Notification."
+                                                       alertAction:@"Open"
+                                                         soundName:nil
+                                                       launchImage:nil
+                                                          userInfo:@{@"time": @"12"}
+                                                        badgeCount:123];
     return YES;
 }
-							
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSLog(@"device token = %@", deviceToken);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"fail %@", error);
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

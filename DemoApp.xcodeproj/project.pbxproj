@@ -18,6 +18,7 @@
 		2BA8856D17A3332E00BA3E90 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BA8856C17A3332E00BA3E90 /* Default-568h@2x.png */; };
 		2BA8857017A3332E00BA3E90 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BA8856E17A3332E00BA3E90 /* MainStoryboard.storyboard */; };
 		2BA8857317A3332E00BA3E90 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8857217A3332E00BA3E90 /* ViewController.m */; };
+		2BA8857C17A3392600BA3E90 /* JRNLocalNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8857B17A3392600BA3E90 /* JRNLocalNotificationCenter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		2BA8856F17A3332E00BA3E90 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		2BA8857117A3332E00BA3E90 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2BA8857217A3332E00BA3E90 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2BA8857A17A3392600BA3E90 /* JRNLocalNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRNLocalNotificationCenter.h; sourceTree = "<group>"; };
+		2BA8857B17A3392600BA3E90 /* JRNLocalNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRNLocalNotificationCenter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +59,7 @@
 		2BA8854A17A3332E00BA3E90 = {
 			isa = PBXGroup;
 			children = (
-				2BA8855C17A3332E00BA3E90 /* DemoApp */,
+				2BA8857917A338EF00BA3E90 /* JRNLocalNotificationCenter */,
 				2BA8855517A3332E00BA3E90 /* Frameworks */,
 				2BA8855417A3332E00BA3E90 /* Products */,
 			);
@@ -90,7 +93,8 @@
 				2BA8857217A3332E00BA3E90 /* ViewController.m */,
 				2BA8855D17A3332E00BA3E90 /* Supporting Files */,
 			);
-			path = DemoApp;
+			name = DemoApp;
+			path = ../DemoApp;
 			sourceTree = "<group>";
 		};
 		2BA8855D17A3332E00BA3E90 /* Supporting Files */ = {
@@ -105,6 +109,16 @@
 				2BA8856C17A3332E00BA3E90 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2BA8857917A338EF00BA3E90 /* JRNLocalNotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				2BA8857A17A3392600BA3E90 /* JRNLocalNotificationCenter.h */,
+				2BA8857B17A3392600BA3E90 /* JRNLocalNotificationCenter.m */,
+				2BA8855C17A3332E00BA3E90 /* DemoApp */,
+			);
+			path = JRNLocalNotificationCenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +190,7 @@
 				2BA8856317A3332E00BA3E90 /* main.m in Sources */,
 				2BA8856717A3332E00BA3E90 /* AppDelegate.m in Sources */,
 				2BA8857317A3332E00BA3E90 /* ViewController.m in Sources */,
+				2BA8857C17A3392600BA3E90 /* JRNLocalNotificationCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +313,7 @@
 				2BA8857817A3332E00BA3E90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
