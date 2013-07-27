@@ -46,7 +46,7 @@ static JRNLocalNotificationCenter *defaultCenter;
 
 - (NSArray *)localNotifications
 {
-    return [[UIApplication sharedApplication] scheduledLocalNotifications];
+    return [[NSArray alloc] initWithArray:[self.localPushDictionary allValues]];
 }
 
 
