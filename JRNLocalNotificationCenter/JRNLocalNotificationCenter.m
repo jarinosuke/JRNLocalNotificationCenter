@@ -12,7 +12,7 @@ NSString *const JRNLocalNotificationHandlingKeyName = @"JRN_KEY";
 
 @interface JRNLocalNotificationCenter()
 @property NSMutableDictionary *localPushDictionary;
-@property BOOL checkRemoteNotificationEnabled;
+@property BOOL checkRemoteNotificationAvailability;
 @end
 
 static JRNLocalNotificationCenter *defaultCenter;
@@ -25,11 +25,21 @@ static JRNLocalNotificationCenter *defaultCenter;
     dispatch_once(&onceToken, ^{
         defaultCenter = [[JRNLocalNotificationCenter alloc] init];
         defaultCenter.localPushDictionary = [[NSMutableDictionary alloc] init];
-        defaultCenter.checkRemoteNotificationEnabled = NO;
+        [defaultCenter loadScheduledLocalPushNotificationsFromApplication];
+        defaultCenter.checkRemoteNotificationAvailability = NO;
     });
     return defaultCenter;
 }
 
+- (void)loadScheduledLocalPushNotificationsFromApplication
+{
+    NSArray *scheduleLocalPushNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    for (UILocalNotification *localNotification in scheduleLocalPushNotifications) {
+        if ( localNotification.userInfo[JRNLocalNotificationHandlingKeyName] ) {
+            [self.localPushDictionary setObject:localNotification forKey:localNotification.userInfo[JRNLocalNotificationHandlingKeyName]];
+        }
+    }
+}
 
 - (void)cancelAllLocalNotifications
 {
@@ -104,7 +114,7 @@ static JRNLocalNotificationCenter *defaultCenter;
     }
     
     UIRemoteNotificationType notificationType = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
-    if ( self.checkRemoteNotificationEnabled && notificationType == UIRemoteNotificationTypeNone ) {
+    if ( self.checkRemoteNotificationAvailability && notificationType == UIRemoteNotificationTypeNone ) {
         return;
     }
     
@@ -112,7 +122,7 @@ static JRNLocalNotificationCenter *defaultCenter;
     BOOL needsNotify = NO;
     
     //Alert
-    if ( self.checkRemoteNotificationEnabled && (notificationType & UIRemoteNotificationTypeAlert) != UIRemoteNotificationTypeAlert ) {
+    if ( self.checkRemoteNotificationAvailability && (notificationType & UIRemoteNotificationTypeAlert) != UIRemoteNotificationTypeAlert ) {
         needsNotify = NO;
     } else {
         needsNotify = YES;
@@ -127,7 +137,7 @@ static JRNLocalNotificationCenter *defaultCenter;
     
     
     //Sound
-    if ( self.checkRemoteNotificationEnabled && (notificationType & UIRemoteNotificationTypeSound) != UIRemoteNotificationTypeSound ) {
+    if ( self.checkRemoteNotificationAvailability && (notificationType & UIRemoteNotificationTypeSound) != UIRemoteNotificationTypeSound ) {
         needsNotify = NO;
     } else {
         needsNotify = YES;
@@ -140,7 +150,7 @@ static JRNLocalNotificationCenter *defaultCenter;
     
     
     //Badge
-    if ( self.checkRemoteNotificationEnabled && (notificationType & UIRemoteNotificationTypeBadge) != UIRemoteNotificationTypeBadge ) {
+    if ( self.checkRemoteNotificationAvailability && (notificationType & UIRemoteNotificationTypeBadge) != UIRemoteNotificationTypeBadge ) {
     } else {
         localNotification.applicationIconBadgeNumber = badgeCount;
     }
