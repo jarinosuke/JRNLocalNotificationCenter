@@ -19,7 +19,22 @@
 		2BA8857017A3332E00BA3E90 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BA8856E17A3332E00BA3E90 /* MainStoryboard.storyboard */; };
 		2BA8857317A3332E00BA3E90 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8857217A3332E00BA3E90 /* ViewController.m */; };
 		2BA8857C17A3392600BA3E90 /* JRNLocalNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8857B17A3392600BA3E90 /* JRNLocalNotificationCenter.m */; };
+		2BA8858417A3A4A700BA3E90 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA8858317A3A4A700BA3E90 /* SenTestingKit.framework */; };
+		2BA8858517A3A4A700BA3E90 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA8855617A3332E00BA3E90 /* UIKit.framework */; };
+		2BA8858617A3A4A700BA3E90 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA8855817A3332E00BA3E90 /* Foundation.framework */; };
+		2BA8858C17A3A4A700BA3E90 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BA8858A17A3A4A700BA3E90 /* InfoPlist.strings */; };
+		2BA8858F17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8858E17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2BA8859417A3A4D500BA3E90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BA8854B17A3332E00BA3E90 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BA8855217A3332E00BA3E90;
+			remoteInfo = DemoApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2BA8855317A3332E00BA3E90 /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +55,13 @@
 		2BA8857217A3332E00BA3E90 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2BA8857A17A3392600BA3E90 /* JRNLocalNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRNLocalNotificationCenter.h; sourceTree = "<group>"; };
 		2BA8857B17A3392600BA3E90 /* JRNLocalNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRNLocalNotificationCenter.m; sourceTree = "<group>"; };
+		2BA8858217A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JRNLocalNotificationCenterTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BA8858317A3A4A700BA3E90 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		2BA8858917A3A4A700BA3E90 /* JRNLocalNotificationCenterTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JRNLocalNotificationCenterTest-Info.plist"; sourceTree = "<group>"; };
+		2BA8858B17A3A4A700BA3E90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2BA8858D17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JRNLocalNotificationCenterTest.h; sourceTree = "<group>"; };
+		2BA8858E17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JRNLocalNotificationCenterTest.m; sourceTree = "<group>"; };
+		2BA8859017A3A4A700BA3E90 /* JRNLocalNotificationCenterTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JRNLocalNotificationCenterTest-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +75,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2BA8857E17A3A4A700BA3E90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BA8858417A3A4A700BA3E90 /* SenTestingKit.framework in Frameworks */,
+				2BA8858517A3A4A700BA3E90 /* UIKit.framework in Frameworks */,
+				2BA8858617A3A4A700BA3E90 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -60,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				2BA8857917A338EF00BA3E90 /* JRNLocalNotificationCenter */,
+				2BA8858717A3A4A700BA3E90 /* JRNLocalNotificationCenterTest */,
 				2BA8855517A3332E00BA3E90 /* Frameworks */,
 				2BA8855417A3332E00BA3E90 /* Products */,
 			);
@@ -69,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				2BA8855317A3332E00BA3E90 /* DemoApp.app */,
+				2BA8858217A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,6 +113,7 @@
 				2BA8855617A3332E00BA3E90 /* UIKit.framework */,
 				2BA8855817A3332E00BA3E90 /* Foundation.framework */,
 				2BA8855A17A3332E00BA3E90 /* CoreGraphics.framework */,
+				2BA8858317A3A4A700BA3E90 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -121,6 +156,26 @@
 			path = JRNLocalNotificationCenter;
 			sourceTree = "<group>";
 		};
+		2BA8858717A3A4A700BA3E90 /* JRNLocalNotificationCenterTest */ = {
+			isa = PBXGroup;
+			children = (
+				2BA8858D17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.h */,
+				2BA8858E17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m */,
+				2BA8858817A3A4A700BA3E90 /* Supporting Files */,
+			);
+			path = JRNLocalNotificationCenterTest;
+			sourceTree = "<group>";
+		};
+		2BA8858817A3A4A700BA3E90 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2BA8858917A3A4A700BA3E90 /* JRNLocalNotificationCenterTest-Info.plist */,
+				2BA8858A17A3A4A700BA3E90 /* InfoPlist.strings */,
+				2BA8859017A3A4A700BA3E90 /* JRNLocalNotificationCenterTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,6 +195,25 @@
 			productName = DemoApp;
 			productReference = 2BA8855317A3332E00BA3E90 /* DemoApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		2BA8858117A3A4A700BA3E90 /* JRNLocalNotificationCenterTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BA8859117A3A4A700BA3E90 /* Build configuration list for PBXNativeTarget "JRNLocalNotificationCenterTest" */;
+			buildPhases = (
+				2BA8857D17A3A4A700BA3E90 /* Sources */,
+				2BA8857E17A3A4A700BA3E90 /* Frameworks */,
+				2BA8857F17A3A4A700BA3E90 /* Resources */,
+				2BA8858017A3A4A700BA3E90 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2BA8859517A3A4D500BA3E90 /* PBXTargetDependency */,
+			);
+			name = JRNLocalNotificationCenterTest;
+			productName = JRNLocalNotificationCenterTest;
+			productReference = 2BA8858217A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -163,6 +237,7 @@
 			projectRoot = "";
 			targets = (
 				2BA8855217A3332E00BA3E90 /* DemoApp */,
+				2BA8858117A3A4A700BA3E90 /* JRNLocalNotificationCenterTest */,
 			);
 		};
 /* End PBXProject section */
@@ -180,7 +255,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2BA8857F17A3A4A700BA3E90 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BA8858C17A3A4A700BA3E90 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2BA8858017A3A4A700BA3E90 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2BA8854F17A3332E00BA3E90 /* Sources */ = {
@@ -194,7 +293,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2BA8857D17A3A4A700BA3E90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BA8858F17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2BA8859517A3A4D500BA3E90 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2BA8855217A3332E00BA3E90 /* DemoApp */;
+			targetProxy = 2BA8859417A3A4D500BA3E90 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2BA8855F17A3332E00BA3E90 /* InfoPlist.strings */ = {
@@ -211,6 +326,14 @@
 				2BA8856F17A3332E00BA3E90 /* en */,
 			);
 			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		2BA8858A17A3A4A700BA3E90 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BA8858B17A3A4A700BA3E90 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -294,6 +417,36 @@
 			};
 			name = Release;
 		};
+		2BA8859217A3A4A700BA3E90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JRNLocalNotificationCenterTest/JRNLocalNotificationCenterTest-Prefix.pch";
+				INFOPLIST_FILE = "JRNLocalNotificationCenterTest/JRNLocalNotificationCenterTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		2BA8859317A3A4A700BA3E90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JRNLocalNotificationCenterTest/JRNLocalNotificationCenterTest-Prefix.pch";
+				INFOPLIST_FILE = "JRNLocalNotificationCenterTest/JRNLocalNotificationCenterTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -314,6 +467,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		2BA8859117A3A4A700BA3E90 /* Build configuration list for PBXNativeTarget "JRNLocalNotificationCenterTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BA8859217A3A4A700BA3E90 /* Debug */,
+				2BA8859317A3A4A700BA3E90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
