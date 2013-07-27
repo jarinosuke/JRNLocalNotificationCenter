@@ -24,6 +24,7 @@
 		2BA8858617A3A4A700BA3E90 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA8855817A3332E00BA3E90 /* Foundation.framework */; };
 		2BA8858C17A3A4A700BA3E90 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BA8858A17A3A4A700BA3E90 /* InfoPlist.strings */; };
 		2BA8858F17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8858E17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m */; };
+		2BA8859717A40FE700BA3E90 /* JRNLocalNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8857B17A3392600BA3E90 /* JRNLocalNotificationCenter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -297,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BA8859717A40FE700BA3E90 /* JRNLocalNotificationCenter.m in Sources */,
 				2BA8858F17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
