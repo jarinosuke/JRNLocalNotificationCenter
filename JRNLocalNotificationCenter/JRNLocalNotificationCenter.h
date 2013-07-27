@@ -9,14 +9,29 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *const JRNLocalNotificationHandlingKeyName;
+extern NSString *const JRNApplicationDidReceiveLocalNotification;
+
+typedef void (^JRNLocalNotificationHandler)(NSString *key, NSDictionary *userInfo);
 
 @interface JRNLocalNotificationCenter : NSObject
 + (JRNLocalNotificationCenter *)defaultCenter;
 - (NSArray *)localNotifications;
+
+//Handler
+- (void)setLocalNotificationHandler:(JRNLocalNotificationHandler)handler;
+
+
+//Handling
+- (void)didReceiveLocalNotificationUserInfo:(NSDictionary *)userInfo;
+
+
+//Cancel
 - (void)cancelAllLocalNotifications;
 - (void)cancelLocalNotification:(UILocalNotification *)localNotification;
 - (void)cancelLocalNotificationForKey:(NSString *)key;
 
+
+//Post
 - (void)postNotificationOnNowForKey:(NSString *)key
                           alertBody:(NSString *)alertBody
                         alertAction:(NSString *)alertAction
@@ -33,4 +48,5 @@ extern NSString *const JRNLocalNotificationHandlingKeyName;
                launchImage:(NSString *)launchImage
                   userInfo:(NSDictionary *)userInfo
                 badgeCount:(NSUInteger)badgeCount;
+
 @end

@@ -16,17 +16,27 @@
     // Override point for customization after application launch.
     [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge)];
     application.applicationIconBadgeNumber = 0;
+    
+    [[JRNLocalNotificationCenter defaultCenter] setLocalNotificationHandler:^(NSString *key, NSDictionary *userInfo) {
+        if ( [key isEqualToString:@"test"] ) {
+            [[[UIAlertView alloc] initWithTitle:@"Local Notification Handling"
+                                        message:@"key=test"
+                                       delegate:nil
+                              cancelButtonTitle:@"Cancel"
+                              otherButtonTitles:nil] show];
+        }
+    }];
+    
+    if ( launchOptions[UIApplicationLaunchOptionsLocalNotificationKey] ) {
+        [[JRNLocalNotificationCenter defaultCenter] didReceiveLocalNotificationUserInfo:launchOptions[UIApplicationLaunchOptionsLocalNotificationKey]];
+    }
+    
     return YES;
 }
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    NSLog(@"device token = %@", deviceToken);
-}
-
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
-    NSLog(@"fail %@", error);
+    [[JRNLocalNotificationCenter defaultCenter] didReceiveLocalNotificationUserInfo:notification.userInfo];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -37,7 +47,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 

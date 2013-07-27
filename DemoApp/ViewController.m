@@ -27,8 +27,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didReceiveLocalNotification:)
+                                                 name:JRNApplicationDidReceiveLocalNotification
+                                               object:nil];
     [self.tableView reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,6 +71,14 @@
                                                         badgeCount:[[UIApplication sharedApplication] applicationIconBadgeNumber] + 1];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
+}
+
+#pragma mark -
+#pragma mark - Notification
+
+- (void)didReceiveLocalNotification:(NSNotification *)notification
+{
+    [self.tableView reloadData];
 }
 
 #pragma mark - 

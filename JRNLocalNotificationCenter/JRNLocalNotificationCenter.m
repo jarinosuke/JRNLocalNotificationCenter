@@ -9,10 +9,12 @@
 #import "JRNLocalNotificationCenter.h"
 
 NSString *const JRNLocalNotificationHandlingKeyName = @"JRN_KEY";
+NSString *const JRNApplicationDidReceiveLocalNotification = @"JRNApplicationDidReceiveLocalNotification";
 
 @interface JRNLocalNotificationCenter()
 @property NSMutableDictionary *localPushDictionary;
 @property BOOL checkRemoteNotificationAvailability;
+@property (assign, nonatomic) JRNLocalNotificationHandler localNotificationHandler;
 @end
 
 static JRNLocalNotificationCenter *defaultCenter;
@@ -27,6 +29,7 @@ static JRNLocalNotificationCenter *defaultCenter;
         defaultCenter.localPushDictionary = [[NSMutableDictionary alloc] init];
         [defaultCenter loadScheduledLocalPushNotificationsFromApplication];
         defaultCenter.checkRemoteNotificationAvailability = NO;
+        defaultCenter.localNotificationHandler = nil;
     });
     return defaultCenter;
 }
@@ -45,6 +48,29 @@ static JRNLocalNotificationCenter *defaultCenter;
 {
     return [[UIApplication sharedApplication] scheduledLocalNotifications];
 }
+
+
+- (void)setLocalNotificationHandler:(JRNLocalNotificationHandler)handler
+{
+    _localNotificationHandler = handler;
+}
+
+
+- (void)didReceiveLocalNotificationUserInfo:(NSDictionary *)userInfo
+{
+    if ( !userInfo[JRNLocalNotificationHandlingKeyName] ) {
+        return;
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:JRNApplicationDidReceiveLocalNotification
+                                                        object:nil
+                                                      userInfo:userInfo];
+    
+    if ( self.localNotificationHandler ) {
+        self.localNotificationHandler(userInfo[JRNLocalNotificationHandlingKeyName], userInfo);
+    }
+}
+
 
 - (void)cancelAllLocalNotifications
 {
@@ -147,7 +173,7 @@ static JRNLocalNotificationCenter *defaultCenter;
     //add key name for handling it.
     NSMutableDictionary *userInfoAddingHandlingKey = [NSMutableDictionary dictionaryWithDictionary:userInfo];
     [userInfoAddingHandlingKey setObject:key forKey:JRNLocalNotificationHandlingKeyName];
-    localNotification.userInfo         = userInfo;
+    localNotification.userInfo         = userInfoAddingHandlingKey;
     localNotification.alertBody        = alertBody;
     localNotification.alertAction      = alertAction;
     localNotification.alertLaunchImage = launchImage;
