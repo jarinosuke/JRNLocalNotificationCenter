@@ -1,7 +1,14 @@
+[![Build Status](https://travis-ci.org/jarinosuke/JRNLocalNotificationCenter.png?branch=master)](https://travis-ci.org/jarinosuke/JRNLocalNotificationCenter)
+
 ## Requirements
 
 - iOS 5.0 or later.
 - ARC
+
+## Features
+
+- make easier to post UILocalNotification and handle it.
+- cancellation after application process has been dead by specifying key when posted.
 
 ## Files
 
@@ -23,14 +30,37 @@ files for sample application which lists scheduled local notifications.
 #import "JRNLocalNotificationCenter.h"
 ```
 
-- schedule your local notification.
+- post scheduled local notification.
 
 ```objectivec
+[[JRNLocalNotificationCenter defaultCenter] postNotificationOn:[NSDate dateWithTimeIntervalSinceNow:30.0]
+                                                        forKey:@"test"
+                                                     alertBody:@"This is JRNLocalNotificationCenter sample"
+                                                   alertAction:@"Open"
+                                                     soundName:nil
+                                                   launchImage:nil
+                                                      userInfo:@{@"time": @"12"}
+                                                    badgeCount:[[UIApplication sharedApplication] applicationIconBadgeNumber] + 1];
 ```
 
-- cancel your local notification. 
+- cancel scheduled local notification. 
 
 ```objectivec
+[[JRNLocalNotificationCenter defaultCenter] cancelLocalNotificationForKey:@"test"];
+```
+
+- handle local notification.
+
+```objectivec
+###application:didFinishLaunchingWithOptions:
+[[JRNLocalNotificationCenter defaultCenter] setLocalNotificationHandler:^(NSString *key, NSDictionary *userInfo) {
+    if ( [key isEqualToString:@"test"] ) {
+        //implement handling method for "test"
+    }
+}];
+
+###application:didReceiveLocalNotification:
+[[JRNLocalNotificationCenter defaultCenter] didReceiveLocalNotificationUserInfo:notification.userInfo];
 ```
 
 ## Install
