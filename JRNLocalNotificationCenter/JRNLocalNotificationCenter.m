@@ -14,7 +14,6 @@ NSString *const JRNApplicationDidReceiveLocalNotification = @"JRNApplicationDidR
 @interface JRNLocalNotificationCenter()
 @property NSMutableDictionary *localPushDictionary;
 @property BOOL checkRemoteNotificationAvailability;
-@property (assign, nonatomic) JRNLocalNotificationHandler localNotificationHandler;
 @end
 
 static JRNLocalNotificationCenter *defaultCenter;
@@ -47,12 +46,6 @@ static JRNLocalNotificationCenter *defaultCenter;
 - (NSArray *)localNotifications
 {
     return [[NSArray alloc] initWithArray:[self.localPushDictionary allValues]];
-}
-
-
-- (void)setLocalNotificationHandler:(JRNLocalNotificationHandler)handler
-{
-    _localNotificationHandler = handler;
 }
 
 

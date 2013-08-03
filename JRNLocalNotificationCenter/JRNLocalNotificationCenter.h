@@ -14,11 +14,10 @@ extern NSString *const JRNApplicationDidReceiveLocalNotification;
 typedef void (^JRNLocalNotificationHandler)(NSString *key, NSDictionary *userInfo);
 
 @interface JRNLocalNotificationCenter : NSObject
+@property (assign, nonatomic) JRNLocalNotificationHandler localNotificationHandler;
+
 + (JRNLocalNotificationCenter *)defaultCenter;
 - (NSArray *)localNotifications;
-
-//Handler
-- (void)setLocalNotificationHandler:(JRNLocalNotificationHandler)handler;
 
 
 //Handling
