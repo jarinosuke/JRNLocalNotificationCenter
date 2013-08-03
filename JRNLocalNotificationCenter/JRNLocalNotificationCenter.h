@@ -30,7 +30,20 @@ typedef void (^JRNLocalNotificationHandler)(NSString *key, NSDictionary *userInf
 - (void)cancelLocalNotificationForKey:(NSString *)key;
 
 
-//Post
+//Post on now
+
+- (void)postNotificationOnNowForKey:(NSString *)key
+                          alertBody:(NSString *)alertBody;
+
+- (void)postNotificationOnNowForKey:(NSString *)key
+                          alertBody:(NSString *)alertBody
+                           userInfo:(NSDictionary *)userInfo;
+
+- (void)postNotificationOnNowForKey:(NSString *)key
+                          alertBody:(NSString *)alertBody
+                           userInfo:(NSDictionary *)userInfo
+                         badgeCount:(NSInteger)badgeCount;
+
 - (void)postNotificationOnNowForKey:(NSString *)key
                           alertBody:(NSString *)alertBody
                         alertAction:(NSString *)alertAction
@@ -38,6 +51,24 @@ typedef void (^JRNLocalNotificationHandler)(NSString *key, NSDictionary *userInf
                         launchImage:(NSString *)launchImage
                            userInfo:(NSDictionary *)userInfo
                          badgeCount:(NSUInteger)badgeCount;
+
+
+//Post on specified date
+
+- (void)postNotificationOn:(NSDate *)fireDate
+                    forKey:(NSString *)key
+                 alertBody:(NSString *)alertBody;
+
+- (void)postNotificationOn:(NSDate *)fireDate
+                    forKey:(NSString *)key
+                 alertBody:(NSString *)alertBody
+                  userInfo:(NSDictionary *)userInfo;
+
+- (void)postNotificationOn:(NSDate *)fireDate
+                    forKey:(NSString *)key
+                 alertBody:(NSString *)alertBody
+                  userInfo:(NSDictionary *)userInfo
+                badgeCount:(NSInteger)badgeCount;
 
 - (void)postNotificationOn:(NSDate *)fireDate
                     forKey:(NSString *)key

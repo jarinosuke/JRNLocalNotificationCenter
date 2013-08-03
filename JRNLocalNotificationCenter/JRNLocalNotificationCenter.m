@@ -94,6 +94,54 @@ static JRNLocalNotificationCenter *defaultCenter;
     [self.localPushDictionary removeObjectForKey:key];
 }
 
+#pragma mark -
+#pragma mark - Post on now
+
+- (void)postNotificationOnNowForKey:(NSString *)key
+                          alertBody:(NSString *)alertBody
+{
+    [self postNotificationOnNow:YES
+                       fireDate:nil
+                         forKey:key
+                      alertBody:alertBody
+                    alertAction:nil
+                      soundName:nil
+                    launchImage:nil
+                       userInfo:nil
+                     badgeCount:0];
+}
+
+- (void)postNotificationOnNowForKey:(NSString *)key
+                          alertBody:(NSString *)alertBody
+                           userInfo:(NSDictionary *)userInfo
+{
+    [self postNotificationOnNow:YES
+                       fireDate:nil
+                         forKey:key
+                      alertBody:alertBody
+                    alertAction:nil
+                      soundName:nil
+                    launchImage:nil
+                       userInfo:userInfo
+                     badgeCount:0];
+}
+
+- (void)postNotificationOnNowForKey:(NSString *)key
+                          alertBody:(NSString *)alertBody
+                           userInfo:(NSDictionary *)userInfo
+                         badgeCount:(NSInteger)badgeCount
+{
+    [self postNotificationOnNow:YES
+                       fireDate:nil
+                         forKey:key
+                      alertBody:alertBody
+                    alertAction:nil
+                      soundName:nil
+                    launchImage:nil
+                       userInfo:userInfo
+                     badgeCount:badgeCount];
+}
+
 - (void)postNotificationOnNowForKey:(NSString *)key
                           alertBody:(NSString *)alertBody
                         alertAction:(NSString *)alertAction
@@ -113,6 +161,57 @@ static JRNLocalNotificationCenter *defaultCenter;
                      badgeCount:badgeCount];
 }
 
+
+#pragma mark -
+#pragma mark - Post on specified date
+
+- (void)postNotificationOn:(NSDate *)fireDate
+                    forKey:(NSString *)key
+                 alertBody:(NSString *)alertBody
+{
+    [self postNotificationOnNow:NO
+                       fireDate:fireDate
+                         forKey:key
+                      alertBody:alertBody
+                    alertAction:nil
+                      soundName:nil
+                    launchImage:nil
+                       userInfo:nil
+                     badgeCount:0];
+}
+
+- (void)postNotificationOn:(NSDate *)fireDate
+                    forKey:(NSString *)key
+                 alertBody:(NSString *)alertBody
+                  userInfo:(NSDictionary *)userInfo
+{
+    [self postNotificationOnNow:NO
+                       fireDate:fireDate
+                         forKey:key
+                      alertBody:alertBody
+                    alertAction:nil
+                      soundName:nil
+                    launchImage:nil
+                       userInfo:userInfo
+                     badgeCount:0];
+}
+
+- (void)postNotificationOn:(NSDate *)fireDate
+                    forKey:(NSString *)key
+                 alertBody:(NSString *)alertBody
+                  userInfo:(NSDictionary *)userInfo
+                badgeCount:(NSInteger)badgeCount
+{
+    [self postNotificationOnNow:NO
+                       fireDate:fireDate
+                         forKey:key
+                      alertBody:alertBody
+                    alertAction:nil
+                      soundName:nil
+                    launchImage:nil
+                       userInfo:userInfo
+                     badgeCount:badgeCount];
+}
 
 - (void)postNotificationOn:(NSDate *)fireDate
                     forKey:(NSString *)key
