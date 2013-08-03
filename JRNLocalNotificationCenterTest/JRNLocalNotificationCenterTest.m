@@ -66,7 +66,6 @@
                                                        launchImage:nil
                                                           userInfo:@{@"test-key": @"test-value"}
                                                         badgeCount:1];
-    NSLog(@"count %d", [[[JRNLocalNotificationCenter defaultCenter] localNotifications] count]);
     [[JRNLocalNotificationCenter defaultCenter] cancelLocalNotificationForKey:@"uopoxo"];
     STAssertFalse([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"canceled by wrong key.");
 }
@@ -152,14 +151,19 @@
         STAssertTrue([key isEqualToString:@"test"], @"posted key is different when handler fire.");
         STAssertTrue([userInfo[@"test-key"] isEqualToString:@"test-value"], @"posted userInfo is different when handler fire.");
     }];
-    [[JRNLocalNotificationCenter defaultCenter] postNotificationOnNowForKey:@"test"
-                                                                  alertBody:@"JRNLocalNotificationTest"
-                                                                alertAction:@"Cancel"
-                                                                  soundName:nil
-                                                                launchImage:nil
-                                                                   userInfo:@{@"test-key": @"test-value"}
-                                                                 badgeCount:1];
+    
+    NSDictionary *userInfo = @{JRNLocalNotificationHandlingKeyName: @"test", @"test-key": @"test-value"};
+    [[JRNLocalNotificationCenter defaultCenter] didReceiveLocalNotificationUserInfo:userInfo];
 }
+
+- (void)testHandlingWhenHandlerIsNil
+{
+    [[JRNLocalNotificationCenter defaultCenter] setLocalNotificationHandler:nil];
+    
+    NSDictionary *userInfo = @{JRNLocalNotificationHandlingKeyName: @"test", @"test-key": @"test-value"};
+    STAssertNoThrow([[JRNLocalNotificationCenter defaultCenter] didReceiveLocalNotificationUserInfo:userInfo], @"can not receive local notification when handler is nil");
+}
+
 
 #pragma mark -
 #pragma mark - Badge Count
