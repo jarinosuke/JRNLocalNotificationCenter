@@ -34,13 +34,14 @@ files for sample application which lists scheduled local notifications.
 
 ```objectivec
 [[JRNLocalNotificationCenter defaultCenter] postNotificationOn:[NSDate dateWithTimeIntervalSinceNow:30.0]
-                                                        forKey:@"test"
-                                                     alertBody:@"This is JRNLocalNotificationCenter sample"
-                                                   alertAction:@"Open"
-                                                     soundName:nil
-                                                   launchImage:nil
-                                                      userInfo:@{@"time": @"12"}
-                                                    badgeCount:[[UIApplication sharedApplication] applicationIconBadgeNumber] + 1];
+                                                            forKey:@"test"
+                                                         alertBody:@"This is JRNLocalNotificationCenter sample"
+                                                       alertAction:@"Open"
+                                                         soundName:nil
+                                                       launchImage:nil
+                                                          userInfo:@{@"time": @"12"}
+                                                        badgeCount:[[UIApplication sharedApplication] applicationIconBadgeNumber] + 1
+                                                    repeatInterval:NSCalendarUnitDay];
 ```
 
 - cancel scheduled local notification. 
