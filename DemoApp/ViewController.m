@@ -68,7 +68,8 @@
                                                          soundName:nil
                                                        launchImage:nil
                                                           userInfo:@{@"time": @"12"}
-                                                        badgeCount:[[UIApplication sharedApplication] applicationIconBadgeNumber] + 1];
+                                                        badgeCount:[[UIApplication sharedApplication] applicationIconBadgeNumber] + 1
+                                                    repeatInterval:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
 }

@@ -108,7 +108,8 @@ static JRNLocalNotificationCenter *defaultCenter;
                       soundName:nil
                     launchImage:nil
                        userInfo:nil
-                     badgeCount:0];
+                     badgeCount:0
+                 repeatInterval:0];
 }
 
 - (void)postNotificationOnNowForKey:(NSString *)key
@@ -123,7 +124,8 @@ static JRNLocalNotificationCenter *defaultCenter;
                       soundName:nil
                     launchImage:nil
                        userInfo:userInfo
-                     badgeCount:0];
+                     badgeCount:0
+                 repeatInterval:0];
 }
 
 - (void)postNotificationOnNowForKey:(NSString *)key
@@ -139,7 +141,8 @@ static JRNLocalNotificationCenter *defaultCenter;
                       soundName:nil
                     launchImage:nil
                        userInfo:userInfo
-                     badgeCount:badgeCount];
+                     badgeCount:badgeCount
+                 repeatInterval:0];
 }
 
 - (void)postNotificationOnNowForKey:(NSString *)key
@@ -149,6 +152,7 @@ static JRNLocalNotificationCenter *defaultCenter;
                         launchImage:(NSString *)launchImage
                            userInfo:(NSDictionary *)userInfo
                          badgeCount:(NSUInteger)badgeCount
+                     repeatInterval:(NSCalendarUnit)repeatInterval
 {
     [self postNotificationOnNow:YES
                        fireDate:nil
@@ -158,7 +162,8 @@ static JRNLocalNotificationCenter *defaultCenter;
                       soundName:soundName
                     launchImage:launchImage
                        userInfo:userInfo
-                     badgeCount:badgeCount];
+                     badgeCount:badgeCount
+                 repeatInterval:repeatInterval];
 }
 
 
@@ -177,7 +182,8 @@ static JRNLocalNotificationCenter *defaultCenter;
                       soundName:nil
                     launchImage:nil
                        userInfo:nil
-                     badgeCount:0];
+                     badgeCount:0
+                 repeatInterval:0];
 }
 
 - (void)postNotificationOn:(NSDate *)fireDate
@@ -193,7 +199,8 @@ static JRNLocalNotificationCenter *defaultCenter;
                       soundName:nil
                     launchImage:nil
                        userInfo:userInfo
-                     badgeCount:0];
+                     badgeCount:0
+                 repeatInterval:0];
 }
 
 - (void)postNotificationOn:(NSDate *)fireDate
@@ -210,7 +217,8 @@ static JRNLocalNotificationCenter *defaultCenter;
                       soundName:nil
                     launchImage:nil
                        userInfo:userInfo
-                     badgeCount:badgeCount];
+                     badgeCount:badgeCount
+                 repeatInterval:0];
 }
 
 - (void)postNotificationOn:(NSDate *)fireDate
@@ -221,6 +229,7 @@ static JRNLocalNotificationCenter *defaultCenter;
                launchImage:(NSString *)launchImage
                   userInfo:(NSDictionary *)userInfo
                 badgeCount:(NSUInteger)badgeCount
+            repeatInterval:(NSCalendarUnit)repeatInterval
 {
     [self postNotificationOnNow:NO
                        fireDate:fireDate
@@ -230,7 +239,8 @@ static JRNLocalNotificationCenter *defaultCenter;
                       soundName:soundName
                     launchImage:launchImage
                        userInfo:userInfo
-                     badgeCount:badgeCount];
+                     badgeCount:badgeCount
+                 repeatInterval:repeatInterval];
 }
 
 - (void)postNotificationOnNow:(BOOL)presentNow
@@ -242,6 +252,7 @@ static JRNLocalNotificationCenter *defaultCenter;
                   launchImage:(NSString *)launchImage
                      userInfo:(NSDictionary *)userInfo
                    badgeCount:(NSUInteger)badgeCount
+               repeatInterval:(NSCalendarUnit)repeatInterval;
 {
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     if ( !localNotification ) {
@@ -269,7 +280,7 @@ static JRNLocalNotificationCenter *defaultCenter;
     localNotification.alertBody        = alertBody;
     localNotification.alertAction      = alertAction;
     localNotification.alertLaunchImage = launchImage;
-    
+    localNotification.repeatInterval   = repeatInterval;
     
     //Sound
     if ( self.checkRemoteNotificationAvailability && (notificationType & UIRemoteNotificationTypeSound) != UIRemoteNotificationTypeSound ) {
