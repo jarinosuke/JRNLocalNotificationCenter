@@ -2,8 +2,7 @@ test:
 	xcodebuild \
 		-sdk iphonesimulator \
 		-project DemoApp.xcodeproj \
-		-target JRNLocalNotificationCenterTest \
+    -scheme DemoApp \
 		-configuration Debug \
-		clean build \
+		clean build test\
 		ONLY_ACTIVE_ARCH=NO \
-		TEST_AFTER_BUILD=YES \
