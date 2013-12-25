@@ -37,7 +37,8 @@
                                                          soundName:nil
                                                        launchImage:nil
                                                           userInfo:@{@"test-key": @"test-value"}
-                                                        badgeCount:1];
+                                                        badgeCount:1
+                                                    repeatInterval:0];
     
     STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"LocalNotification count is different.");
 }
@@ -51,7 +52,8 @@
                                                          soundName:nil
                                                        launchImage:nil
                                                           userInfo:@{@"test-key": @"test-value"}
-                                                        badgeCount:1];
+                                                        badgeCount:1
+                                                    repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelLocalNotificationForKey:@"test"];
     STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"couldn't cancel by correct key.");
 }
@@ -65,7 +67,8 @@
                                                          soundName:nil
                                                        launchImage:nil
                                                           userInfo:@{@"test-key": @"test-value"}
-                                                        badgeCount:1];
+                                                        badgeCount:1
+                                                    repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelLocalNotificationForKey:@"uopoxo"];
     STAssertFalse([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"canceled by wrong key.");
 }
@@ -80,7 +83,8 @@
                                                          soundName:nil
                                                        launchImage:nil
                                                           userInfo:@{@"test-key": @"test-value"}
-                                                        badgeCount:1];
+                                                        badgeCount:1
+                                                    repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelAllLocalNotifications];
     STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"couldn't cancel correctly.");
 }
@@ -96,7 +100,8 @@
                                                                   soundName:nil
                                                                 launchImage:nil
                                                                    userInfo:@{@"test-key": @"test-value"}
-                                                                 badgeCount:1];
+                                                                 badgeCount:1
+                                                             repeatInterval:0];
     
     STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"LocalNotification count is different.");
 }
@@ -109,7 +114,8 @@
                                                                   soundName:nil
                                                                 launchImage:nil
                                                                    userInfo:@{@"test-key": @"test-value"}
-                                                                 badgeCount:1];
+                                                                 badgeCount:1
+                                                             repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelLocalNotificationForKey:@"test"];
     STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"couldn't cancel by correct key.");
 }
@@ -122,7 +128,8 @@
                                                                   soundName:nil
                                                                 launchImage:nil
                                                                    userInfo:@{@"test-key": @"test-value"}
-                                                                 badgeCount:1];
+                                                                 badgeCount:1
+                                                             repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelLocalNotificationForKey:@"uopoxo"];
     STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"canceled by wrong key.");
 }
@@ -136,7 +143,8 @@
                                                                   soundName:nil
                                                                 launchImage:nil
                                                                    userInfo:@{@"test-key": @"test-value"}
-                                                                 badgeCount:1];
+                                                                 badgeCount:1
+                                                             repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelAllLocalNotifications];
     STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"couldn't cancel correctly.");
 }

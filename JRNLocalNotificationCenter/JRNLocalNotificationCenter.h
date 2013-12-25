@@ -50,7 +50,8 @@ typedef void (^JRNLocalNotificationHandler)(NSString *key, NSDictionary *userInf
                           soundName:(NSString *)soundName
                         launchImage:(NSString *)launchImage
                            userInfo:(NSDictionary *)userInfo
-                         badgeCount:(NSUInteger)badgeCount;
+                         badgeCount:(NSUInteger)badgeCount
+                     repeatInterval:(NSCalendarUnit)repeatInterval;
 
 
 //Post on specified date
@@ -77,6 +78,7 @@ typedef void (^JRNLocalNotificationHandler)(NSString *key, NSDictionary *userInf
                  soundName:(NSString *)soundName
                launchImage:(NSString *)launchImage
                   userInfo:(NSDictionary *)userInfo
-                badgeCount:(NSUInteger)badgeCount;
+                badgeCount:(NSUInteger)badgeCount
+            repeatInterval:(NSCalendarUnit)repeatInterval;
 
 @end
