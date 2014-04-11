@@ -18,7 +18,7 @@
     application.applicationIconBadgeNumber = 0;
     
     [[JRNLocalNotificationCenter defaultCenter] setLocalNotificationHandler:^(NSString *key, NSDictionary *userInfo) {
-        if ( [key isEqualToString:@"test"] ) {
+        if ([key isEqualToString:@"test"]) {
             [[[UIAlertView alloc] initWithTitle:@"Local Notification Handling"
                                         message:@"key=test"
                                        delegate:nil
@@ -27,7 +27,7 @@
         }
     }];
     
-    if ( launchOptions[UIApplicationLaunchOptionsLocalNotificationKey] ) {
+    if (launchOptions[UIApplicationLaunchOptionsLocalNotificationKey]) {
         [[JRNLocalNotificationCenter defaultCenter] didReceiveLocalNotificationUserInfo:launchOptions[UIApplicationLaunchOptionsLocalNotificationKey]];
     }
     

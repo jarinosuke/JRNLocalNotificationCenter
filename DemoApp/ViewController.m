@@ -19,7 +19,7 @@
 {
     [super viewDidLoad];
 	
-    if ( [self.tableView respondsToSelector:@selector(registerClass:forCellReuseIdentifier:)] ) {
+    if ([self.tableView respondsToSelector:@selector(registerClass:forCellReuseIdentifier:)]) {
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     }
 }
@@ -102,7 +102,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ( editingStyle == UITableViewCellEditingStyleDelete ) {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
         UILocalNotification *localNotification = [self localNotificationAtIndexPath:indexPath];
         [[JRNLocalNotificationCenter defaultCenter] cancelLocalNotification:localNotification];
     }
@@ -117,11 +117,11 @@
     UITableViewCell *cell;
     NSString *cellIdentifier = @"Cell";
     
-    if ( [tableView respondsToSelector:@selector(dequeueReusableCellWithIdentifier:forIndexPath:)] ) {
+    if ([tableView respondsToSelector:@selector(dequeueReusableCellWithIdentifier:forIndexPath:)]) {
         cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        if ( !cell ) {
+        if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         }
     }

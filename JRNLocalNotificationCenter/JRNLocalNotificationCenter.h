@@ -16,7 +16,7 @@ typedef void (^JRNLocalNotificationHandler)(NSString *key, NSDictionary *userInf
 @interface JRNLocalNotificationCenter : NSObject
 @property (nonatomic, copy) JRNLocalNotificationHandler localNotificationHandler;
 
-+ (JRNLocalNotificationCenter *)defaultCenter;
++ (instancetype)defaultCenter;
 - (NSArray *)localNotifications;
 
 
