@@ -51,9 +51,11 @@ static JRNLocalNotificationCenter *defaultCenter;
 
 - (void)didReceiveLocalNotificationUserInfo:(NSDictionary *)userInfo
 {
-    if (!userInfo[JRNLocalNotificationHandlingKeyName]) {
+    NSString *key = userInfo[JRNLocalNotificationHandlingKeyName];
+    if (!key) {
         return;
     }
+    [self.localPushDictionary removeObjectForKey:key];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:JRNApplicationDidReceiveLocalNotification
                                                         object:nil
@@ -254,6 +256,11 @@ static JRNLocalNotificationCenter *defaultCenter;
                    badgeCount:(NSUInteger)badgeCount
                repeatInterval:(NSCalendarUnit)repeatInterval;
 {
+    if (self.localPushDictionary[key]) {
+        //same key already exists
+        return;
+    }
+    
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     if (!localNotification) {
         return;
