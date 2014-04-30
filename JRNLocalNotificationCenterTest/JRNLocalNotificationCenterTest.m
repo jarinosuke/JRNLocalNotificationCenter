@@ -70,7 +70,7 @@
                                                         badgeCount:1
                                                     repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelLocalNotificationForKey:@"uopoxo"];
-    STAssertFalse([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"canceled by wrong key.");
+    STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"canceled by wrong key.");
 }
 
 
@@ -87,6 +87,52 @@
                                                     repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelAllLocalNotifications];
     STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"couldn't cancel correctly.");
+}
+
+- (void)testScheduleMultipleLocalNotificationCount
+{
+    [[JRNLocalNotificationCenter defaultCenter] postNotificationOn:[NSDate dateWithTimeIntervalSinceNow:15.0]
+                                                            forKey:@"test1"
+                                                         alertBody:@"JRNLocalNotificationTest"
+                                                       alertAction:@"Cancel"
+                                                         soundName:nil
+                                                       launchImage:nil
+                                                          userInfo:@{@"test-key": @"test-value"}
+                                                        badgeCount:1
+                                                    repeatInterval:0];
+    [[JRNLocalNotificationCenter defaultCenter] postNotificationOn:[NSDate dateWithTimeIntervalSinceNow:15.0]
+                                                            forKey:@"test2"
+                                                         alertBody:@"JRNLocalNotificationTest"
+                                                       alertAction:@"Cancel"
+                                                         soundName:nil
+                                                       launchImage:nil
+                                                          userInfo:@{@"test-key": @"test-value"}
+                                                        badgeCount:1
+                                                    repeatInterval:0];
+    STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 2, @"manage unique with key");
+}
+
+- (void)testScheduleSameKeyLocalNotificationCount
+{
+    [[JRNLocalNotificationCenter defaultCenter] postNotificationOn:[NSDate dateWithTimeIntervalSinceNow:15.0]
+                                                            forKey:@"test"
+                                                         alertBody:@"JRNLocalNotificationTest"
+                                                       alertAction:@"Cancel"
+                                                         soundName:nil
+                                                       launchImage:nil
+                                                          userInfo:@{@"test-key": @"test-value"}
+                                                        badgeCount:1
+                                                    repeatInterval:0];
+    [[JRNLocalNotificationCenter defaultCenter] postNotificationOn:[NSDate dateWithTimeIntervalSinceNow:15.0]
+                                                            forKey:@"test"
+                                                         alertBody:@"JRNLocalNotificationTest"
+                                                       alertAction:@"Cancel"
+                                                         soundName:nil
+                                                       launchImage:nil
+                                                          userInfo:@{@"test-key": @"test-value"}
+                                                        badgeCount:1
+                                                    repeatInterval:0];
+    STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"don't schedule same key");
 }
 
 #pragma mark -
