@@ -1,8 +1,8 @@
 test:
-	xcodebuild \
-		-sdk iphonesimulator \
-		-project DemoApp.xcodeproj \
-    -scheme DemoApp \
-		-configuration Debug \
-		clean build test\
-		ONLY_ACTIVE_ARCH=NO \
+	xcodebuild clean test \
+	-sdk iphonesimulator \
+	-project DemoApp.xcodeproj \
+	-scheme DemoApp \
+	-configuration Debug \
+	-destination "name=iPhone Retina (4-inch),OS=7.0" \
+	OBJROOT=build \
