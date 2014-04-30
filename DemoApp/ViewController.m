@@ -61,8 +61,9 @@
 
 - (IBAction)addButtonTapped:(id)sender
 {
+    NSUInteger notificationCount = [[[JRNLocalNotificationCenter defaultCenter] localNotifications] count];
     [[JRNLocalNotificationCenter defaultCenter] postNotificationOn:[NSDate dateWithTimeIntervalSinceNow:30.0]
-                                                            forKey:@"test"
+                                                            forKey:[NSString stringWithFormat:@"test_%d", notificationCount]
                                                          alertBody:@"This is JRNLocalNotificationCenter sample"
                                                        alertAction:@"Open"
                                                          soundName:nil
