@@ -40,7 +40,7 @@
                                                         badgeCount:1
                                                     repeatInterval:0];
     
-    STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"LocalNotification count is different.");
+    XCTAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"LocalNotification count is different.");
 }
 
 - (void)testPostScheduledNotificationCountAfterCancelingCorrectKey
@@ -55,7 +55,7 @@
                                                         badgeCount:1
                                                     repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelLocalNotificationForKey:@"test"];
-    STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"couldn't cancel by correct key.");
+    XCTAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"couldn't cancel by correct key.");
 }
 
 - (void)testPostScheduledNotificationCountAfterCancelingWrongKey
@@ -70,7 +70,7 @@
                                                         badgeCount:1
                                                     repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelLocalNotificationForKey:@"uopoxo"];
-    STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"canceled by wrong key.");
+    XCTAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"canceled by wrong key.");
 }
 
 
@@ -86,7 +86,7 @@
                                                         badgeCount:1
                                                     repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelAllLocalNotifications];
-    STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"couldn't cancel correctly.");
+    XCTAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"couldn't cancel correctly.");
 }
 
 - (void)testScheduleMultipleLocalNotificationCount
@@ -109,7 +109,7 @@
                                                           userInfo:@{@"test-key": @"test-value"}
                                                         badgeCount:1
                                                     repeatInterval:0];
-    STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 2, @"manage unique with key");
+    XCTAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 2, @"manage unique with key");
 }
 
 - (void)testScheduleSameKeyLocalNotificationCount
@@ -132,7 +132,7 @@
                                                           userInfo:@{@"test-key": @"test-value"}
                                                         badgeCount:1
                                                     repeatInterval:0];
-    STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"don't schedule same key");
+    XCTAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"don't schedule same key");
 }
 
 #pragma mark -
@@ -149,7 +149,7 @@
                                                                  badgeCount:1
                                                              repeatInterval:0];
     
-    STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"LocalNotification count is different.");
+    XCTAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"LocalNotification count is different.");
 }
 
 - (void)testPostNotificationCountAfterCancelingCorrectKey
@@ -163,7 +163,7 @@
                                                                  badgeCount:1
                                                              repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelLocalNotificationForKey:@"test"];
-    STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"couldn't cancel by correct key.");
+    XCTAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"couldn't cancel by correct key.");
 }
 
 - (void)testPostNotificationCountAfterCancelingWrongKey
@@ -177,7 +177,7 @@
                                                                  badgeCount:1
                                                              repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelLocalNotificationForKey:@"uopoxo"];
-    STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"canceled by wrong key.");
+    XCTAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 1, @"canceled by wrong key.");
 }
 
 
@@ -192,7 +192,7 @@
                                                                  badgeCount:1
                                                              repeatInterval:0];
     [[JRNLocalNotificationCenter defaultCenter] cancelAllLocalNotifications];
-    STAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"couldn't cancel correctly.");
+    XCTAssertTrue([[[JRNLocalNotificationCenter defaultCenter] localNotifications] count] == 0, @"couldn't cancel correctly.");
 }
 
 
@@ -202,8 +202,8 @@
 - (void)testHandlingWhenPostWithCorrectKey
 {
     [[JRNLocalNotificationCenter defaultCenter] setLocalNotificationHandler:^(NSString *key, NSDictionary *userInfo) {
-        STAssertTrue([key isEqualToString:@"test"], @"posted key is different when handler fire.");
-        STAssertTrue([userInfo[@"test-key"] isEqualToString:@"test-value"], @"posted userInfo is different when handler fire.");
+        XCTAssertTrue([key isEqualToString:@"test"], @"posted key is different when handler fire.");
+        XCTAssertTrue([userInfo[@"test-key"] isEqualToString:@"test-value"], @"posted userInfo is different when handler fire.");
     }];
     
     NSDictionary *userInfo = @{JRNLocalNotificationHandlingKeyName: @"test", @"test-key": @"test-value"};
@@ -215,7 +215,7 @@
     [[JRNLocalNotificationCenter defaultCenter] setLocalNotificationHandler:nil];
     
     NSDictionary *userInfo = @{JRNLocalNotificationHandlingKeyName: @"test", @"test-key": @"test-value"};
-    STAssertNoThrow([[JRNLocalNotificationCenter defaultCenter] didReceiveLocalNotificationUserInfo:userInfo], @"can not receive local notification when handler is nil");
+    XCTAssertNoThrow([[JRNLocalNotificationCenter defaultCenter] didReceiveLocalNotificationUserInfo:userInfo], @"can not receive local notification when handler is nil");
 }
 
 

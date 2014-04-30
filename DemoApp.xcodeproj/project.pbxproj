@@ -24,7 +24,6 @@
 		2BA8858C17A3A4A700BA3E90 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BA8858A17A3A4A700BA3E90 /* InfoPlist.strings */; };
 		2BA8858F17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8858E17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m */; };
 		2BA8859717A40FE700BA3E90 /* JRNLocalNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8857B17A3392600BA3E90 /* JRNLocalNotificationCenter.m */; };
-		771285CC1911BDE900492FEF /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 771285CB1911BDE900492FEF /* SenTestingKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,13 +55,12 @@
 		2BA8857217A3332E00BA3E90 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		2BA8857A17A3392600BA3E90 /* JRNLocalNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRNLocalNotificationCenter.h; sourceTree = "<group>"; };
 		2BA8857B17A3392600BA3E90 /* JRNLocalNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRNLocalNotificationCenter.m; sourceTree = "<group>"; };
-		2BA8858217A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JRNLocalNotificationCenterTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BA8858217A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JRNLocalNotificationCenterTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BA8858917A3A4A700BA3E90 /* JRNLocalNotificationCenterTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JRNLocalNotificationCenterTest-Info.plist"; sourceTree = "<group>"; };
 		2BA8858B17A3A4A700BA3E90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2BA8858D17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JRNLocalNotificationCenterTest.h; sourceTree = "<group>"; };
 		2BA8858E17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JRNLocalNotificationCenterTest.m; sourceTree = "<group>"; };
 		2BA8859017A3A4A700BA3E90 /* JRNLocalNotificationCenterTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JRNLocalNotificationCenterTest-Prefix.pch"; sourceTree = "<group>"; };
-		771285CB1911BDE900492FEF /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +78,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				771285CC1911BDE900492FEF /* SenTestingKit.framework in Frameworks */,
 				2BA8858517A3A4A700BA3E90 /* UIKit.framework in Frameworks */,
 				2BA8858617A3A4A700BA3E90 /* Foundation.framework in Frameworks */,
 			);
@@ -103,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				2BA8855317A3332E00BA3E90 /* DemoApp.app */,
-				2BA8858217A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.octest */,
+				2BA8858217A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,7 +108,6 @@
 		2BA8855517A3332E00BA3E90 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				771285CB1911BDE900492FEF /* SenTestingKit.framework */,
 				2BA8855617A3332E00BA3E90 /* UIKit.framework */,
 				2BA8855817A3332E00BA3E90 /* Foundation.framework */,
 				2BA8855A17A3332E00BA3E90 /* CoreGraphics.framework */,
@@ -213,8 +209,8 @@
 			);
 			name = JRNLocalNotificationCenterTest;
 			productName = JRNLocalNotificationCenterTest;
-			productReference = 2BA8858217A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 2BA8858217A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -426,12 +422,12 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JRNLocalNotificationCenterTest/JRNLocalNotificationCenterTest-Prefix.pch";
 				INFOPLIST_FILE = "JRNLocalNotificationCenterTest/JRNLocalNotificationCenterTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -442,12 +438,12 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JRNLocalNotificationCenterTest/JRNLocalNotificationCenterTest-Prefix.pch";
 				INFOPLIST_FILE = "JRNLocalNotificationCenterTest/JRNLocalNotificationCenterTest-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

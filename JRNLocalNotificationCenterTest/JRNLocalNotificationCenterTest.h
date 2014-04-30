@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 jarinosuke. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface JRNLocalNotificationCenterTest : SenTestCase
+@interface JRNLocalNotificationCenterTest : XCTestCase
 
 @end
