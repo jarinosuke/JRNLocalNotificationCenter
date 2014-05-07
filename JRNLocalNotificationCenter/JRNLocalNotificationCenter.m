@@ -99,55 +99,55 @@ static JRNLocalNotificationCenter *defaultCenter;
 #pragma mark -
 #pragma mark - Post on now
 
-- (void)postNotificationOnNowForKey:(NSString *)key
-                          alertBody:(NSString *)alertBody
+- (UILocalNotification *)postNotificationOnNowForKey:(NSString *)key
+                                           alertBody:(NSString *)alertBody
 {
-    [self postNotificationOnNow:YES
-                       fireDate:nil
-                         forKey:key
-                      alertBody:alertBody
-                    alertAction:nil
-                      soundName:nil
-                    launchImage:nil
-                       userInfo:nil
-                     badgeCount:0
-                 repeatInterval:0];
+    return [self postNotificationOnNow:YES
+                              fireDate:nil
+                                forKey:key
+                             alertBody:alertBody
+                           alertAction:nil
+                             soundName:nil
+                           launchImage:nil
+                              userInfo:nil
+                            badgeCount:0
+                        repeatInterval:0];
 }
 
-- (void)postNotificationOnNowForKey:(NSString *)key
+- (UILocalNotification *)postNotificationOnNowForKey:(NSString *)key
                           alertBody:(NSString *)alertBody
                            userInfo:(NSDictionary *)userInfo
 {
-    [self postNotificationOnNow:YES
-                       fireDate:nil
-                         forKey:key
-                      alertBody:alertBody
-                    alertAction:nil
-                      soundName:nil
-                    launchImage:nil
-                       userInfo:userInfo
-                     badgeCount:0
-                 repeatInterval:0];
+    return [self postNotificationOnNow:YES
+                              fireDate:nil
+                                forKey:key
+                             alertBody:alertBody
+                           alertAction:nil
+                             soundName:nil
+                           launchImage:nil
+                              userInfo:userInfo
+                            badgeCount:0
+                        repeatInterval:0];
 }
 
-- (void)postNotificationOnNowForKey:(NSString *)key
+- (UILocalNotification *)postNotificationOnNowForKey:(NSString *)key
                           alertBody:(NSString *)alertBody
                            userInfo:(NSDictionary *)userInfo
                          badgeCount:(NSInteger)badgeCount
 {
-    [self postNotificationOnNow:YES
-                       fireDate:nil
-                         forKey:key
-                      alertBody:alertBody
-                    alertAction:nil
-                      soundName:nil
-                    launchImage:nil
-                       userInfo:userInfo
-                     badgeCount:badgeCount
-                 repeatInterval:0];
+    return [self postNotificationOnNow:YES
+                              fireDate:nil
+                                forKey:key
+                             alertBody:alertBody
+                           alertAction:nil
+                             soundName:nil
+                           launchImage:nil
+                              userInfo:userInfo
+                            badgeCount:badgeCount
+                        repeatInterval:0];
 }
 
-- (void)postNotificationOnNowForKey:(NSString *)key
+- (UILocalNotification *)postNotificationOnNowForKey:(NSString *)key
                           alertBody:(NSString *)alertBody
                         alertAction:(NSString *)alertAction
                           soundName:(NSString *)soundName
@@ -156,74 +156,74 @@ static JRNLocalNotificationCenter *defaultCenter;
                          badgeCount:(NSUInteger)badgeCount
                      repeatInterval:(NSCalendarUnit)repeatInterval
 {
-    [self postNotificationOnNow:YES
-                       fireDate:nil
-                         forKey:key
-                      alertBody:alertBody
-                    alertAction:alertAction
-                      soundName:soundName
-                    launchImage:launchImage
-                       userInfo:userInfo
-                     badgeCount:badgeCount
-                 repeatInterval:repeatInterval];
+    return [self postNotificationOnNow:YES
+                              fireDate:nil
+                                forKey:key
+                             alertBody:alertBody
+                           alertAction:alertAction
+                             soundName:soundName
+                           launchImage:launchImage
+                              userInfo:userInfo
+                            badgeCount:badgeCount
+                        repeatInterval:repeatInterval];
 }
 
 
 #pragma mark -
 #pragma mark - Post on specified date
 
-- (void)postNotificationOn:(NSDate *)fireDate
+- (UILocalNotification *)postNotificationOn:(NSDate *)fireDate
                     forKey:(NSString *)key
                  alertBody:(NSString *)alertBody
 {
-    [self postNotificationOnNow:NO
-                       fireDate:fireDate
-                         forKey:key
-                      alertBody:alertBody
-                    alertAction:nil
-                      soundName:nil
-                    launchImage:nil
-                       userInfo:nil
-                     badgeCount:0
-                 repeatInterval:0];
+    return [self postNotificationOnNow:NO
+                              fireDate:fireDate
+                                forKey:key
+                             alertBody:alertBody
+                           alertAction:nil
+                             soundName:nil
+                           launchImage:nil
+                              userInfo:nil
+                            badgeCount:0
+                        repeatInterval:0];
 }
 
-- (void)postNotificationOn:(NSDate *)fireDate
+- (UILocalNotification *)postNotificationOn:(NSDate *)fireDate
                     forKey:(NSString *)key
                  alertBody:(NSString *)alertBody
                   userInfo:(NSDictionary *)userInfo
 {
-    [self postNotificationOnNow:NO
-                       fireDate:fireDate
-                         forKey:key
-                      alertBody:alertBody
-                    alertAction:nil
-                      soundName:nil
-                    launchImage:nil
-                       userInfo:userInfo
-                     badgeCount:0
-                 repeatInterval:0];
+    return [self postNotificationOnNow:NO
+                              fireDate:fireDate
+                                forKey:key
+                             alertBody:alertBody
+                           alertAction:nil
+                             soundName:nil
+                           launchImage:nil
+                              userInfo:userInfo
+                            badgeCount:0
+                        repeatInterval:0];
 }
 
-- (void)postNotificationOn:(NSDate *)fireDate
+- (UILocalNotification *)postNotificationOn:(NSDate *)fireDate
                     forKey:(NSString *)key
                  alertBody:(NSString *)alertBody
                   userInfo:(NSDictionary *)userInfo
                 badgeCount:(NSInteger)badgeCount
 {
-    [self postNotificationOnNow:NO
-                       fireDate:fireDate
-                         forKey:key
-                      alertBody:alertBody
-                    alertAction:nil
-                      soundName:nil
-                    launchImage:nil
-                       userInfo:userInfo
-                     badgeCount:badgeCount
-                 repeatInterval:0];
+    return [self postNotificationOnNow:NO
+                              fireDate:fireDate
+                                forKey:key
+                             alertBody:alertBody
+                           alertAction:nil
+                             soundName:nil
+                           launchImage:nil
+                              userInfo:userInfo
+                            badgeCount:badgeCount
+                        repeatInterval:0];
 }
 
-- (void)postNotificationOn:(NSDate *)fireDate
+- (UILocalNotification *)postNotificationOn:(NSDate *)fireDate
                     forKey:(NSString *)key
                  alertBody:(NSString *)alertBody
                alertAction:(NSString *)alertAction
@@ -233,19 +233,19 @@ static JRNLocalNotificationCenter *defaultCenter;
                 badgeCount:(NSUInteger)badgeCount
             repeatInterval:(NSCalendarUnit)repeatInterval
 {
-    [self postNotificationOnNow:NO
-                       fireDate:fireDate
-                         forKey:key
-                      alertBody:alertBody
-                    alertAction:alertAction
-                      soundName:soundName
-                    launchImage:launchImage
-                       userInfo:userInfo
-                     badgeCount:badgeCount
-                 repeatInterval:repeatInterval];
+    return [self postNotificationOnNow:NO
+                              fireDate:fireDate
+                                forKey:key
+                             alertBody:alertBody
+                           alertAction:alertAction
+                             soundName:soundName
+                           launchImage:launchImage
+                              userInfo:userInfo
+                            badgeCount:badgeCount
+                        repeatInterval:repeatInterval];
 }
 
-- (void)postNotificationOnNow:(BOOL)presentNow
+- (UILocalNotification *)postNotificationOnNow:(BOOL)presentNow
                      fireDate:(NSDate *)fireDate
                        forKey:(NSString *)key
                     alertBody:(NSString *)alertBody
@@ -258,17 +258,17 @@ static JRNLocalNotificationCenter *defaultCenter;
 {
     if (self.localPushDictionary[key]) {
         //same key already exists
-        return;
+        return self.localPushDictionary[key];
     }
     
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
     if (!localNotification) {
-        return;
+        return nil;
     }
     
     UIRemoteNotificationType notificationType = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
     if (self.checkRemoteNotificationAvailability && notificationType == UIRemoteNotificationTypeNone) {
-        return;
+        return nil;
     }
     
     
@@ -318,6 +318,9 @@ static JRNLocalNotificationCenter *defaultCenter;
             [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
         }
         [self.localPushDictionary setObject:localNotification forKey:key];
+        return localNotification;
+    } else {
+        return nil;
     }
 }
 @end

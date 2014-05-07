@@ -32,53 +32,49 @@ typedef void (^JRNLocalNotificationHandler)(NSString *key, NSDictionary *userInf
 
 //Post on now
 
-- (void)postNotificationOnNowForKey:(NSString *)key
-                          alertBody:(NSString *)alertBody;
+- (UILocalNotification *)postNotificationOnNowForKey:(NSString *)key
+                                           alertBody:(NSString *)alertBody;
 
-- (void)postNotificationOnNowForKey:(NSString *)key
-                          alertBody:(NSString *)alertBody
-                           userInfo:(NSDictionary *)userInfo;
+- (UILocalNotification *)postNotificationOnNowForKey:(NSString *)key
+                                           alertBody:(NSString *)alertBody
+                                            userInfo:(NSDictionary *)userInfo;
 
-- (void)postNotificationOnNowForKey:(NSString *)key
-                          alertBody:(NSString *)alertBody
-                           userInfo:(NSDictionary *)userInfo
-                         badgeCount:(NSInteger)badgeCount;
 
-- (void)postNotificationOnNowForKey:(NSString *)key
-                          alertBody:(NSString *)alertBody
-                        alertAction:(NSString *)alertAction
-                          soundName:(NSString *)soundName
-                        launchImage:(NSString *)launchImage
-                           userInfo:(NSDictionary *)userInfo
-                         badgeCount:(NSUInteger)badgeCount
-                     repeatInterval:(NSCalendarUnit)repeatInterval;
+- (UILocalNotification *)postNotificationOnNowForKey:(NSString *)key
+                                           alertBody:(NSString *)alertBody
+                                         alertAction:(NSString *)alertAction
+                                           soundName:(NSString *)soundName
+                                         launchImage:(NSString *)launchImage
+                                            userInfo:(NSDictionary *)userInfo
+                                          badgeCount:(NSUInteger)badgeCount
+                                      repeatInterval:(NSCalendarUnit)repeatInterval;
 
 
 //Post on specified date
 
-- (void)postNotificationOn:(NSDate *)fireDate
-                    forKey:(NSString *)key
-                 alertBody:(NSString *)alertBody;
+- (UILocalNotification *)postNotificationOn:(NSDate *)fireDate
+                                     forKey:(NSString *)key
+                                  alertBody:(NSString *)alertBody;
 
-- (void)postNotificationOn:(NSDate *)fireDate
-                    forKey:(NSString *)key
-                 alertBody:(NSString *)alertBody
-                  userInfo:(NSDictionary *)userInfo;
+- (UILocalNotification *)postNotificationOn:(NSDate *)fireDate
+                                     forKey:(NSString *)key
+                                  alertBody:(NSString *)alertBody
+                                   userInfo:(NSDictionary *)userInfo;
 
-- (void)postNotificationOn:(NSDate *)fireDate
-                    forKey:(NSString *)key
-                 alertBody:(NSString *)alertBody
-                  userInfo:(NSDictionary *)userInfo
-                badgeCount:(NSInteger)badgeCount;
+- (UILocalNotification *)postNotificationOn:(NSDate *)fireDate
+                                     forKey:(NSString *)key
+                                  alertBody:(NSString *)alertBody
+                                   userInfo:(NSDictionary *)userInfo
+                                 badgeCount:(NSInteger)badgeCount;
 
-- (void)postNotificationOn:(NSDate *)fireDate
-                    forKey:(NSString *)key
-                 alertBody:(NSString *)alertBody
-               alertAction:(NSString *)alertAction
-                 soundName:(NSString *)soundName
-               launchImage:(NSString *)launchImage
-                  userInfo:(NSDictionary *)userInfo
-                badgeCount:(NSUInteger)badgeCount
-            repeatInterval:(NSCalendarUnit)repeatInterval;
+- (UILocalNotification *)postNotificationOn:(NSDate *)fireDate
+                                     forKey:(NSString *)key
+                                  alertBody:(NSString *)alertBody
+                                alertAction:(NSString *)alertAction
+                                  soundName:(NSString *)soundName
+                                launchImage:(NSString *)launchImage
+                                   userInfo:(NSDictionary *)userInfo
+                                 badgeCount:(NSUInteger)badgeCount
+                             repeatInterval:(NSCalendarUnit)repeatInterval;
 
 @end
