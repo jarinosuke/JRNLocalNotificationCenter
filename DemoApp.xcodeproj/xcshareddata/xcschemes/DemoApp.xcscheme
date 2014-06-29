@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2BA8858117A3A4A700BA3E90"
-               BuildableName = "JRNLocalNotificationCenterTest.octest"
+               BuildableName = "JRNLocalNotificationCenterTest.xctest"
                BlueprintName = "JRNLocalNotificationCenterTest"
                ReferencedContainer = "container:DemoApp.xcodeproj">
             </BuildableReference>
