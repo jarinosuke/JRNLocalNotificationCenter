@@ -24,6 +24,7 @@
 		2BA8858C17A3A4A700BA3E90 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BA8858A17A3A4A700BA3E90 /* InfoPlist.strings */; };
 		2BA8858F17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8858E17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m */; };
 		2BA8859717A40FE700BA3E90 /* JRNLocalNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8857B17A3392600BA3E90 /* JRNLocalNotificationCenter.m */; };
+		779DCC1B195FCE29002FB958 /* JRNLocalNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 779DCC1A195FCE29002FB958 /* JRNLocalNotificationCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		2BA8858D17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JRNLocalNotificationCenterTest.h; sourceTree = "<group>"; };
 		2BA8858E17A3A4A700BA3E90 /* JRNLocalNotificationCenterTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JRNLocalNotificationCenterTest.m; sourceTree = "<group>"; };
 		2BA8859017A3A4A700BA3E90 /* JRNLocalNotificationCenterTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JRNLocalNotificationCenterTest-Prefix.pch"; sourceTree = "<group>"; };
+		779DCC19195FCE28002FB958 /* DemoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DemoApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		779DCC1A195FCE29002FB958 /* JRNLocalNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JRNLocalNotificationCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,8 @@
 			children = (
 				2BA8857A17A3392600BA3E90 /* JRNLocalNotificationCenter.h */,
 				2BA8857B17A3392600BA3E90 /* JRNLocalNotificationCenter.m */,
+				779DCC1A195FCE29002FB958 /* JRNLocalNotificationCenter.swift */,
+				779DCC19195FCE28002FB958 /* DemoApp-Bridging-Header.h */,
 				2BA8855C17A3332E00BA3E90 /* DemoApp */,
 			);
 			path = JRNLocalNotificationCenter;
@@ -286,6 +291,7 @@
 				2BA8856317A3332E00BA3E90 /* main.m in Sources */,
 				2BA8856717A3332E00BA3E90 /* AppDelegate.m in Sources */,
 				2BA8857317A3332E00BA3E90 /* ViewController.m in Sources */,
+				779DCC1B195FCE29002FB958 /* JRNLocalNotificationCenter.swift in Sources */,
 				2BA8857C17A3392600BA3E90 /* JRNLocalNotificationCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,10 +402,14 @@
 		2BA8857717A3332E00BA3E90 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DemoApp/DemoApp-Prefix.pch";
 				INFOPLIST_FILE = "DemoApp/DemoApp-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JRNLocalNotificationCenter/DemoApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -407,10 +417,13 @@
 		2BA8857817A3332E00BA3E90 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DemoApp/DemoApp-Prefix.pch";
 				INFOPLIST_FILE = "DemoApp/DemoApp-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "JRNLocalNotificationCenter/DemoApp-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
