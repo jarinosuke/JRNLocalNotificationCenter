@@ -266,7 +266,13 @@ static JRNLocalNotificationCenter *defaultCenter;
         return nil;
     }
     
-    UIRemoteNotificationType notificationType = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+    NSUInteger notificationType;
+    if (!([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] == NSOrderedAscending)) {
+        notificationType = [[[UIApplication sharedApplication] currentUserNotificationSettings] types];
+    }else{
+        notificationType = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+    }
+    
     if (self.checkRemoteNotificationAvailability && notificationType == UIRemoteNotificationTypeNone) {
         return nil;
     }
