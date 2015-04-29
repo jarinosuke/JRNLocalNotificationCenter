@@ -266,7 +266,15 @@ static JRNLocalNotificationCenter *defaultCenter;
         return nil;
     }
     
-    UIRemoteNotificationType notificationType = [[UIApplication sharedApplication] enabledRemoteNotificationTypes];
+    //return nil, if user denied app's notification requirement
+    
+    NSUInteger notificationType; //UIUserNotificationType(>= iOS8) and UIRemoteNotificatioNType(< iOS8) use same value
+    UIApplication *application = [UIApplication sharedApplication];
+    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) {
+        notificationType = [[application currentUserNotificationSettings] types];
+    } else {
+        notificationType = [application enabledRemoteNotificationTypes];
+    }
     if (self.checkRemoteNotificationAvailability && notificationType == UIRemoteNotificationTypeNone) {
         return nil;
     }
