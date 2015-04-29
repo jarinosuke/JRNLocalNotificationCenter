@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jarinosuke/JRNLocalNotificationCenter.png?branch=master)](https://travis-ci.org/jarinosuke/JRNLocalNotificationCenter)
+[![Build Status](https://travis-ci.org/jarinosuke/JRNLocalNotificationCenter.svg)](https://travis-ci.org/jarinosuke/JRNLocalNotificationCenter)
 
 ## Requirements
 
