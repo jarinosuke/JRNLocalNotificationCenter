@@ -5,7 +5,5 @@ cache:
 before_install:
   - rvm get stable
   - rvm install ruby-2.0.0-p247
-  - gem install cocoapods
-  - pod install
 script:
   - bundle exec rake default
