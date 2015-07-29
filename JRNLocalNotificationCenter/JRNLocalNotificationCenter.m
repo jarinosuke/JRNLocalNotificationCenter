@@ -49,8 +49,9 @@ static JRNLocalNotificationCenter *defaultCenter;
 }
 
 
-- (void)didReceiveLocalNotificationUserInfo:(NSDictionary *)userInfo
+- (void)didReceiveLocalNotification:(UILocalNotification *)localNotification
 {
+    NSDictionary *userInfo = localNotification.userInfo;
     NSString *key = userInfo[JRNLocalNotificationHandlingKeyName];
     if (!key) {
         return;
@@ -62,7 +63,7 @@ static JRNLocalNotificationCenter *defaultCenter;
                                                       userInfo:userInfo];
     
     if (self.localNotificationHandler) {
-        self.localNotificationHandler(userInfo[JRNLocalNotificationHandlingKeyName], userInfo);
+        self.localNotificationHandler(key, userInfo);
     }
 }
 

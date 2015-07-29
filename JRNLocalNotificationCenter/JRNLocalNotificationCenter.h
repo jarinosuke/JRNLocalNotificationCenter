@@ -21,7 +21,7 @@ typedef void (^JRNLocalNotificationHandler)(NSString *key, NSDictionary *userInf
 
 
 //Handling
-- (void)didReceiveLocalNotificationUserInfo:(NSDictionary *)userInfo;
+- (void)didReceiveLocalNotification:(UILocalNotification *)localNotification;
 
 
 //Cancel
