@@ -14,11 +14,15 @@ extern NSString *const JRNApplicationDidReceiveLocalNotification;
 typedef void (^JRNLocalNotificationHandler)(NSString *key, NSDictionary *userInfo);
 
 @interface JRNLocalNotificationCenter : NSObject
+
+@property (nonatomic, readonly) NSDictionary<NSString *, UILocalNotification *> *scheduledLocalNotificationsByKey;
 @property (nonatomic, copy) JRNLocalNotificationHandler localNotificationHandler;
 
 + (instancetype)defaultCenter;
-- (NSArray *)localNotifications;
 
+//Checking
+- (BOOL)isLocalNotificationScheduledForKey:(NSString *)key;
+- (NSDate *)fireDateForExistingScheduledNotificationForKey:(NSString *)key;
 
 //Handling
 - (void)didReceiveLocalNotificationUserInfo:(NSDictionary *)userInfo;
@@ -66,6 +70,16 @@ typedef void (^JRNLocalNotificationHandler)(NSString *key, NSDictionary *userInf
                                   alertBody:(NSString *)alertBody
                                    userInfo:(NSDictionary *)userInfo
                                  badgeCount:(NSInteger)badgeCount;
+
+- (UILocalNotification *)postNotificationOn:(NSDate *)fireDate
+                                     forKey:(NSString *)key
+                                  alertBody:(NSString *)alertBody
+                                alertAction:(NSString *)alertAction
+                                  soundName:(NSString *)soundName
+                                launchImage:(NSString *)launchImage
+                                   userInfo:(NSDictionary *)userInfo
+                                 badgeCount:(NSUInteger)badgeCount
+                             repeatInterval:(NSCalendarUnit)repeatInterval;
 
 - (UILocalNotification *)postNotificationOn:(NSDate *)fireDate
                                      forKey:(NSString *)key
