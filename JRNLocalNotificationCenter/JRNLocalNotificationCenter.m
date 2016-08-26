@@ -12,42 +12,62 @@ NSString *const JRNLocalNotificationHandlingKeyName = @"JRN_KEY";
 NSString *const JRNApplicationDidReceiveLocalNotification = @"JRNApplicationDidReceiveLocalNotification";
 
 @interface JRNLocalNotificationCenter()
-@property (nonatomic) NSMutableDictionary *localPushDictionary;
+@property (nonatomic) NSMutableDictionary<NSString *, UILocalNotification *> *mutableScheduledLocalNotificationsByKey;
 @property (nonatomic) BOOL checkRemoteNotificationAvailability;
 @end
 
-static JRNLocalNotificationCenter *defaultCenter;
-
 @implementation JRNLocalNotificationCenter
 
-+ (instancetype)defaultCenter
-{
++ (instancetype)defaultCenter {
+    static JRNLocalNotificationCenter *defaultCenter;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        defaultCenter = [JRNLocalNotificationCenter new];
-        defaultCenter.localPushDictionary = [NSMutableDictionary new];
-        [defaultCenter loadScheduledLocalPushNotificationsFromApplication];
-        defaultCenter.checkRemoteNotificationAvailability = NO;
-        defaultCenter.localNotificationHandler = nil;
+        defaultCenter = [[JRNLocalNotificationCenter alloc] init];
     });
     return defaultCenter;
 }
 
-- (void)loadScheduledLocalPushNotificationsFromApplication
-{
-    NSArray *scheduleLocalPushNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
-    for (UILocalNotification *localNotification in scheduleLocalPushNotifications) {
+#pragma mark - Initialization
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _mutableScheduledLocalNotificationsByKey = [NSMutableDictionary new];
+        _checkRemoteNotificationAvailability = NO;
+        _localNotificationHandler = nil;
+        [self loadScheduledLocalPushNotificationsFromApplication];
+    }
+    return self;
+}
+
+#pragma mark - Getters
+
+- (NSDictionary<NSString *,UILocalNotification *> *)scheduledLocalNotificationsByKey {
+    return [NSDictionary dictionaryWithDictionary:self.mutableScheduledLocalNotificationsByKey];
+}
+
+#pragma mark - Private
+
+- (void)loadScheduledLocalPushNotificationsFromApplication {
+    NSArray<UILocalNotification *> *scheduleLocalNotifications = [[UIApplication sharedApplication] scheduledLocalNotifications];
+    for (UILocalNotification *localNotification in scheduleLocalNotifications) {
         if (localNotification.userInfo[JRNLocalNotificationHandlingKeyName]) {
-            [self.localPushDictionary setObject:localNotification forKey:localNotification.userInfo[JRNLocalNotificationHandlingKeyName]];
+            [self.mutableScheduledLocalNotificationsByKey setObject:localNotification forKey:localNotification.userInfo[JRNLocalNotificationHandlingKeyName]];
         }
     }
 }
 
-- (NSArray *)localNotifications
-{
-    return [[NSArray alloc] initWithArray:[self.localPushDictionary allValues]];
+- (BOOL)isLocalNotificationScheduledForKey:(NSString *)key {
+    return (self.mutableScheduledLocalNotificationsByKey[key] != nil);
 }
 
+- (NSDate *)fireDateForExistingScheduledNotificationForKey:(NSString *)key {
+    UILocalNotification *notification = self.mutableScheduledLocalNotificationsByKey[key];
+    if (notification) {
+        return notification.fireDate;
+    }
+    return nil;
+}
 
 - (void)didReceiveLocalNotificationUserInfo:(NSDictionary *)userInfo
 {
@@ -55,7 +75,7 @@ static JRNLocalNotificationCenter *defaultCenter;
     if (!key) {
         return;
     }
-    [self.localPushDictionary removeObjectForKey:key];
+    [self.mutableScheduledLocalNotificationsByKey removeObjectForKey:key];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:JRNApplicationDidReceiveLocalNotification
                                                         object:nil
@@ -70,7 +90,7 @@ static JRNLocalNotificationCenter *defaultCenter;
 - (void)cancelAllLocalNotifications
 {
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    [self.localPushDictionary removeAllObjects];
+    [self.mutableScheduledLocalNotificationsByKey removeAllObjects];
 }
 
 - (void)cancelLocalNotification:(UILocalNotification *)localNotification
@@ -81,19 +101,19 @@ static JRNLocalNotificationCenter *defaultCenter;
     
     [[UIApplication sharedApplication] cancelLocalNotification:localNotification];
     if (localNotification.userInfo[JRNLocalNotificationHandlingKeyName]) {
-        [self.localPushDictionary removeObjectForKey:localNotification.userInfo[JRNLocalNotificationHandlingKeyName]];
+        [self.mutableScheduledLocalNotificationsByKey removeObjectForKey:localNotification.userInfo[JRNLocalNotificationHandlingKeyName]];
     }
 }
 
 - (void)cancelLocalNotificationForKey:(NSString *)key
 {
-    if (!self.localPushDictionary[key]) {
+    if (!self.mutableScheduledLocalNotificationsByKey[key]) {
         return;
     }
     
-    UILocalNotification *localNotification = self.localPushDictionary[key];
+    UILocalNotification *localNotification = self.mutableScheduledLocalNotificationsByKey[key];
     [[UIApplication sharedApplication] cancelLocalNotification:localNotification];
-    [self.localPushDictionary removeObjectForKey:key];
+    [self.mutableScheduledLocalNotificationsByKey removeObjectForKey:key];
 }
 
 #pragma mark -
@@ -256,9 +276,9 @@ static JRNLocalNotificationCenter *defaultCenter;
                    badgeCount:(NSUInteger)badgeCount
                repeatInterval:(NSCalendarUnit)repeatInterval;
 {
-    if (self.localPushDictionary[key]) {
+    if (self.mutableScheduledLocalNotificationsByKey[key]) {
         //same key already exists
-        return self.localPushDictionary[key];
+        return self.mutableScheduledLocalNotificationsByKey[key];
     }
     
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
@@ -325,7 +345,7 @@ static JRNLocalNotificationCenter *defaultCenter;
             localNotification.timeZone = [NSTimeZone defaultTimeZone];
             [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
         }
-        [self.localPushDictionary setObject:localNotification forKey:key];
+        [self.mutableScheduledLocalNotificationsByKey setObject:localNotification forKey:key];
         return localNotification;
     } else {
         return nil;
